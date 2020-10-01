@@ -15,10 +15,10 @@ namespace ActorClient
 
             bool i = true;
 
-            while (i)
-            {
-                Thread.Sleep(1000);
-            }
+            //while (i)
+            //{
+            //    Thread.Sleep(1000);
+            //}
 
             for (int k = 0; k < 10; k++)
             {
