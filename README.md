@@ -25,10 +25,10 @@ On Linux, MacOS:
 curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/SetDataAsync -d '{ "Temperature": 100, "Speed": 200 }'
 ~~~
 
-On Windows:
+On Windows in command prompt:
 
 ~~~
-curl -X POST http://127.0.0.1:3500/v1.0/actors/DemoActor/abc/method/SetDataAsync -d "{ \"Temperature\": 28, \"Speed\": 200 }"
+curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/SetDataAsync -d "{ \"Temperature\": 28, \"Speed\": 200 }"
 ~~~
 Get Data Following curl call will get data for actor id "abc" (below calls on MacOs, Linux & Windows are exactly the same except for escaping quotes on Windows for curl)
 
