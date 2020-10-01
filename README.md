@@ -35,12 +35,12 @@ Get Data Following curl call will get data for actor id "abc" (below calls on Ma
 On Linux, MacOS:
 
 ~~~
-curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/GetData
+curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/GetDataAsync
 ~~~
 On Windows:
 
 ~~~
-curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/GetData
+curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/GetDataAsync
 ~~~
 
 **NOTE**
