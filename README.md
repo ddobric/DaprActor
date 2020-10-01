@@ -42,3 +42,25 @@ On Windows:
 ~~~
 curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/method/GetData
 ~~~
+
+**NOTE**
+
+If you get following exception:
+
+~~~
+Invoke-WebRequest : A parameter cannot be found that matches parameter name 'X'.
+At line:1 char:6
++ curl -X POST http://127.0.0.1:3500/v1.0/actors/MachineActor/abc/metho ...
++      ~~
++ CategoryInfo          : InvalidArgument: (:) [Invoke-WebRequest], ParameterBindingException
++ FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+~~~
+
+Then execute 
+
+~~~
+remove-item alias:\curl
+~~~
+
+Finally, exeecute the *curl* command again.
+
