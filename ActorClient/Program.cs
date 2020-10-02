@@ -57,14 +57,6 @@ namespace ActorClient
             // Create Actor Proxy instance to invoke the methods defined in the interface
             var proxy = ActorProxy.Create(actorID, "MachineActor");
 
-            // Need to specify the method name and response type explicitly
-            var response = await proxy.InvokeAsync<MachineData, string>(nameof(IMachineActor.SetDataAsync), new MachineData()
-            {
-                Temperature = DateTime.Now.Second,
-                Speed = DateTime.Now.Ticks,
-                Timestamp = DateTime.Now
-            });
-
             var telemetryData = await proxy.InvokeAsync<MachineData>(nameof(IMachineActor.GetDataAsync));
 
             Console.WriteLine(telemetryData);
