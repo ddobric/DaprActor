@@ -14,6 +14,12 @@ The client can be run as console application too.
 
 If you look for a tutorial, please read this: https://github.com/dapr/dotnet-sdk/blob/master/docs/get-started-dapr-actor.md
 
+### How does it work?
+When one application is started inside of the *dapr* runtime, the service (deamon) daprd.exe (on Windows) is started. This service establishes the connecttion between your application and all other service placed inside of the *dapr* runtime. The service *daprd* acts as a proxy (by outgoing calls) and reverse proxy (by incomming calls) in the *SideCar* architecture. Every service provides one HTTP and  one gRPC endpoint. Applications, running also outside of the runtime, can use these endpoints to communicate with application inside of the *dapr* environment.
+Following picture shows the example described in this post.
+
+![image](https://user-images.githubusercontent.com/1756871/95105991-34c7bb80-0738-11eb-9061-1a9bb44eb01f.png)
+
 ### Talking to actor
 You can invoke Actor methods without remoting (directly over http), if the Actor method accepts at-most one argument. Actor runtime will deserialize the incoming request body from client and use it as method argument to invoke the actor method. When making non-remoting calls Actor method arguments and return types are serialized, deserialized as JSON.
 
