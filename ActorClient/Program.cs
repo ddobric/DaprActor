@@ -20,15 +20,23 @@ namespace ActorClient
             //    Thread.Sleep(1000);
             //}
 
+            Console.WriteLine("Writing actor data...");
+
             for (int k = 0; k < 10; k++)
             {
                 await SendTelemetryData(k.ToString());
             }
 
+            Console.WriteLine("Reading actor data...");
+
             for (int k = 0; k < 10; k++)
             {
                 await ReadActorState (k.ToString());
             }
+
+            Console.WriteLine("Press any key to exit...");
+
+            Console.ReadLine();
         }
 
         static async Task SendTelemetryData(string id)
@@ -58,8 +66,6 @@ namespace ActorClient
             var proxy = ActorProxy.Create(actorID, "MachineActor");
 
             var telemetryData = await proxy.InvokeAsync<MachineData>(nameof(IMachineActor.GetDataAsync));
-
-            Console.WriteLine(telemetryData);
 
             Console.WriteLine($"ActorId: {id} - {telemetryData}");
         }
