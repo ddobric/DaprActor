@@ -22,6 +22,10 @@ namespace ActorClient
 
             Console.WriteLine("Writing actor data...");
 
+            await StartReminder();
+
+            return;
+
             for (int k = 0; k < 10; k++)
             {
                 await SendTelemetryData(k.ToString());
@@ -57,7 +61,11 @@ namespace ActorClient
             Console.WriteLine($"ActorId: {id} - {response}");
         }
 
-
+        /// <summary>
+        /// Reads the actor telemetry data.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         static async Task ReadActorState(string id)
         {
             var actorID = new ActorId(id);
@@ -68,6 +76,24 @@ namespace ActorClient
             var telemetryData = await proxy.InvokeAsync<MachineData>(nameof(IMachineActor.GetDataAsync));
 
             Console.WriteLine($"ActorId: {id} - {telemetryData}");
+
+            var typedProxy = ActorProxy.Create<IMachineActor>(actorID, "MachineActor");
+
+            telemetryData = await typedProxy.GetDataAsync();
+
+            Console.WriteLine($"ActorId: {id} - {telemetryData}");
+        }
+
+        static async Task StartReminder()
+        {
+            var actorID = new ActorId("1");
+
+            var typedProxy = ActorProxy.Create<IMachineActor>(actorID, "MachineActor");
+
+            await typedProxy.RegisterReminder();
+
+            Console.WriteLine("Reminder registered!");
+
         }
     }
 }

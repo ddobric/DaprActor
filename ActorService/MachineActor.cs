@@ -77,7 +77,7 @@ namespace ActorService
                 "MyReminder",              // The name of the reminder
                 null,                      // User state passed to IRemindable.ReceiveReminderAsync()
                 TimeSpan.FromSeconds(5),   // Time to delay before invoking the reminder for the first time
-                TimeSpan.FromSeconds(5));  // Time interval between reminder invocations after the first invocation
+                TimeSpan.FromSeconds(15));  // Time interval between reminder invocations after the first invocation
         }
 
         /// <summary>
