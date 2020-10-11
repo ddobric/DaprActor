@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ActorService
 {
-    public class MachineActor : Actor, IMachineActor
+    public class MachineActor : Actor, IMachineActor, IRemindable
     {
         
         public MachineActor(Dapr.Actors.Runtime.ActorService actorService, ActorId actorId, IActorStateManager actorStateManager = null) : base(actorService, actorId, actorStateManager)
@@ -78,6 +78,8 @@ namespace ActorService
                 null,                      // User state passed to IRemindable.ReceiveReminderAsync()
                 TimeSpan.FromSeconds(5),   // Time to delay before invoking the reminder for the first time
                 TimeSpan.FromSeconds(15));  // Time interval between reminder invocations after the first invocation
+
+            Console.WriteLine($"{this.Id} - Registered reminder.");
         }
 
         /// <summary>

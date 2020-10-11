@@ -20,11 +20,11 @@ namespace ActorClient
             //    Thread.Sleep(1000);
             //}
 
+            //await StartReminder();
+
+            //return;
+
             Console.WriteLine("Writing actor data...");
-
-            await StartReminder();
-
-            return;
 
             for (int k = 0; k < 10; k++)
             {
@@ -86,7 +86,7 @@ namespace ActorClient
 
         static async Task StartReminder()
         {
-            var actorID = new ActorId("1");
+            var actorID = new ActorId("3");
 
             var typedProxy = ActorProxy.Create<IMachineActor>(actorID, "MachineActor");
 
